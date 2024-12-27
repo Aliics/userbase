@@ -1,8 +1,16 @@
 module Main where
 
-import qualified MyLib (someFunc)
+import Database.PostgreSQL.Simple
+import UserBase (server)
+import Web.Scotty (scotty)
 
 main :: IO ()
 main = do
-  putStrLn "Hello, Haskell!"
-  MyLib.someFunc
+  conn <- connect ConnectInfo
+    { connectUser = "postgres"
+    , connectPort     = 5432
+    , connectPassword = "password1"
+    , connectHost     = "localhost"
+    , connectDatabase = "postgres"
+    }
+  scotty 3000 $ server conn

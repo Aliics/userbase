@@ -17,12 +17,24 @@ common warnings
 
 library
     import:           warnings
-    exposed-modules:  MyLib
+    exposed-modules:  
+      UserBase,
+      UserBase.Handlers.User
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.17.2.1
+    build-depends:    
+      base ^>=4.17.2.1,
+      text,
+      aeson,
+      scotty,
+      wai-extra,
+      http-types,
+      opaleye,
+      postgresql-simple,
+      product-profunctors
     hs-source-dirs:   src
     default-language: GHC2021
+    ghc-options: -Wall -XOverloadedStrings -XImplicitParams
 
 executable userbase
     import:           warnings
@@ -31,10 +43,13 @@ executable userbase
     -- other-extensions:
     build-depends:
         base ^>=4.17.2.1,
-        userbase
+        userbase,
+        scotty,
+        postgresql-simple
 
     hs-source-dirs:   app
     default-language: GHC2021
+    ghc-options: -Wall -threaded
 
 test-suite userbase-test
     import:           warnings

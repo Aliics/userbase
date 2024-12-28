@@ -19,7 +19,9 @@ library
     import:           warnings
     exposed-modules:  
       UserBase,
-      UserBase.Handlers.User
+      UserBase.Database.User,
+      UserBase.Handlers.User,
+      UserBase.Types.User
     -- other-modules:
     -- other-extensions:
     build-depends:    

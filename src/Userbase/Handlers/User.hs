@@ -1,8 +1,14 @@
 module Userbase.Handlers.User (userHandlers) where
 
 import Database.PostgreSQL.Simple (Connection)
-import Userbase.Database.User (selectUsers, selectUserWithId)
-import Web.Scotty (ScottyM, get, json, liftIO, pathParam)
+import Userbase.Database.User (selectUserWithId, selectUsers)
+import Web.Scotty
+  ( ScottyM
+  , get
+  , json
+  , liftIO
+  , pathParam
+  )
 
 userHandlers :: (?conn :: Connection) => ScottyM ()
 userHandlers = do

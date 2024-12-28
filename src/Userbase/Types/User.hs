@@ -12,17 +12,19 @@ data User' a b c d = User'
   { userId :: a
   , userEmail :: b
   , userFirstName :: c
-  , userLastName :: d 
+  , userLastName :: d
   }
 type User = User' Int T.Text T.Text T.Text
-type UserField = User' (Field SqlInt4) (Field SqlText) (Field SqlText) (Field SqlText)
+type UserField =
+  User' (Field SqlInt4) (Field SqlText) (Field SqlText) (Field SqlText)
 
 $(makeAdaptorAndInstanceInferrable "pUser" ''User')
 
 instance ToJSON User where
-  toJSON u = object
-    [ "id"        .= userId u
-    , "email"     .= userEmail u
-    , "firstName" .= userFirstName u
-    , "lastName"  .= userLastName u
-    ]
+  toJSON u =
+    object
+      [ "id" .= userId u
+      , "email" .= userEmail u
+      , "firstName" .= userFirstName u
+      , "lastName" .= userLastName u
+      ]

@@ -20,6 +20,7 @@ library
     exposed-modules:  
       Userbase,
       Userbase.Database.User,
+      Userbase.Database.Internal.RunSelect,
       Userbase.Handlers.User,
       Userbase.Types.User
     -- other-modules:

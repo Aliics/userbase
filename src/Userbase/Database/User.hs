@@ -7,6 +7,7 @@ where
 import Database.PostgreSQL.Simple (Connection)
 import Opaleye
   ( Table
+  , limit
   , requiredTableField
   , runSelect
   , selectTable
@@ -15,6 +16,7 @@ import Opaleye
   , where_
   , (.==)
   )
+import Userbase.Database.Internal.RunSelect (runSelectMaybe)
 import Userbase.Types.User (User, User' (..), UserField, pUser)
 
 userTable :: Table UserField UserField
@@ -31,8 +33,8 @@ userTable =
 selectUsers :: (?conn :: Connection) => IO [User]
 selectUsers = runSelect ?conn $ selectTable userTable
 
-selectUserWithId :: (?conn :: Connection) => Int -> IO [User]
-selectUserWithId uid = runSelect ?conn $ do
-  user <- selectTable userTable
+selectUserWithId :: (?conn :: Connection) => Int -> IO (Maybe User)
+selectUserWithId uid = runSelectMaybe ?conn $ do
+  user <- limit 1 $ selectTable userTable
   where_ $ userId user .== sqlInt4 uid
   pure user

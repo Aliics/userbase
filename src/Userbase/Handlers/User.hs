@@ -19,4 +19,4 @@ userHandlers = do
   get "/users/:id" $ do
     uid <- pathParam "id"
     user <- liftIO . selectUserWithId $ read uid
-    json . head $ user
+    json user

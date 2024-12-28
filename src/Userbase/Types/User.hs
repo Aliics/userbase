@@ -3,10 +3,10 @@
 
 module Userbase.Types.User (User' (..), User, UserField, pUser) where
 
+import Data.Aeson (ToJSON (..), object, (.=))
 import Data.Profunctor.Product.TH (makeAdaptorAndInstanceInferrable)
 import Data.Text qualified as T
 import Opaleye (Field, SqlInt4, SqlText)
-import Data.Aeson (ToJSON (..), object, (.=))
 
 data User' a b c d = User'
   { userId :: a

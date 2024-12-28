@@ -1,8 +1,8 @@
-module UserBase.Database.User (selectUsers, selectUserWithId) where
+module Userbase.Database.User (selectUsers, selectUserWithId) where
 
 import Database.PostgreSQL.Simple (Connection)
 import Opaleye (Table, requiredTableField, runSelect, selectTable, sqlInt4, table, where_, (.==))
-import UserBase.Types.User (User, User' (..), UserField, pUser)
+import Userbase.Types.User (User, User' (..), UserField, pUser)
 
 userTable :: Table UserField UserField
 userTable = table "users" $ pUser User' 

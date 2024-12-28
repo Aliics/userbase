@@ -1,7 +1,7 @@
 module Main where
 
 import Database.PostgreSQL.Simple
-import UserBase (server)
+import Userbase (server)
 import Web.Scotty (scotty)
 
 main :: IO ()

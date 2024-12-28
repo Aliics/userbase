@@ -1,7 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE UndecidableInstances #-}
 
-module UserBase.Types.User (User' (..), User, UserField, pUser) where
+module Userbase.Types.User (User' (..), User, UserField, pUser) where
 
 import Data.Profunctor.Product.TH (makeAdaptorAndInstanceInferrable)
 import Data.Text qualified as T

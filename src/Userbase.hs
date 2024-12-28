@@ -1,8 +1,8 @@
-module UserBase (server) where
+module Userbase (server) where
 
 import Database.PostgreSQL.Simple (Connection)
 import Network.Wai.Middleware.RequestLogger (logStdout)
-import UserBase.Handlers.User (userHandlers)
+import Userbase.Handlers.User (userHandlers)
 import Web.Scotty (ScottyM, middleware)
 
 server :: Connection -> ScottyM ()

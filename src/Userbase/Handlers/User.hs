@@ -7,8 +7,11 @@ import Web.Scotty
   , get
   , json
   , liftIO
-  , pathParam
+  , pathParam, throw
   )
+import Control.Monad (when)
+import Data.Maybe (isNothing)
+import Userbase.Types.Errors (HandleError(NotFound))
 
 userHandlers :: (?conn :: Connection) => ScottyM ()
 userHandlers = do
@@ -19,4 +22,5 @@ userHandlers = do
   get "/users/:id" $ do
     uid <- pathParam "id"
     user <- liftIO . selectUserWithId $ read uid
+    when (isNothing user) (throw NotFound)
     json user

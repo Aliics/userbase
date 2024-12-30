@@ -22,7 +22,9 @@ library
       Userbase.Database.User,
       Userbase.Database.Internal.RunSelect,
       Userbase.Handlers.User,
-      Userbase.Types.User
+      Userbase.Types.Errors,
+      Userbase.Types.User,
+      Userbase.Types.UserInput
     -- other-modules:
     -- other-extensions:
     build-depends:    

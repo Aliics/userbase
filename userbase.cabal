@@ -21,10 +21,10 @@ library
       Userbase,
       Userbase.Database.User,
       Userbase.Database.Internal.RunSelect,
+      Userbase.Database.Internal.RunInsert,
       Userbase.Handlers.User,
       Userbase.Types.Errors,
       Userbase.Types.User,
-      Userbase.Types.UserInput
     -- other-modules:
     -- other-extensions:
     build-depends:    
